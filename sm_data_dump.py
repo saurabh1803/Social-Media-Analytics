@@ -1,16 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[55]:
-
 
 access_token = '1197604244-G9qyiTNfs9V1VPKtRkz8rv0YaxdMc9vPovNU6Dw'
 access_token_secret = '9ahcXDBj76JQetdTxQL3hvyE6BoqRn9wfW1tUn9rCMmWf'
 consumer_key = 'lKPbSIynHJeYcMfsiXIJuayCd'
 consumer_secret = 'QDFkW07TwnNfm5sVP0poR1sqfe0FVrFQQD1qBQtx6K3kfSP67a'
 
-
-# In[56]:
 
 
 import psycopg2
@@ -30,14 +26,8 @@ def autorize_twitter_api():
     
     return auth
 
-
-# In[57]:
-
-
 autorize_twitter_api()
 
-
-# In[58]:
 
 
 def autorize_twitter_api():
@@ -51,10 +41,6 @@ def autorize_twitter_api():
     auth.set_access_token(access_token, access_token_secret)
     
     return auth
-
-
-# In[59]:
-
 
 def create_tweets_table(term_to_search):
     """
@@ -85,9 +71,6 @@ def create_tweets_table(term_to_search):
     return
 
 
-# In[92]:
-
-
 def store_tweets_in_table(dump_data):
     """
     This function open a connection with an already created database and inserts into corresponding table 
@@ -115,7 +98,6 @@ def store_tweets_in_table(dump_data):
     return count
 
 
-# In[93]:
 
 
 class MyStreamListener(tweepy.StreamListener):
@@ -188,9 +170,6 @@ class MyStreamListener(tweepy.StreamListener):
             return False
 
 
-# In[94]:
-
-
 if __name__ == "__main__": 
     #Creates the table for storing the tweets
     term_to_search = "VikashDubey"
@@ -202,16 +181,6 @@ if __name__ == "__main__":
     #Stream the tweets
     streamer = tweepy.Stream(auth=autorize_twitter_api(), listener=MyStreamListener(api=api))
     streamer.filter(languages=["en"], track=[term_to_search])
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
 
 
 
